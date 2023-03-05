@@ -25,6 +25,10 @@ export class PetIndexComponent implements OnInit {
     this.isShowAddPetModal = false;
   }
 
+  deletePet(petId: string) {
+    this.petService.delete(petId);
+  }
+
   closeModal(ev: boolean) {
     this.isShowAddPetModal = false;
   }

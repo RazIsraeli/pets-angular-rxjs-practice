@@ -15,6 +15,14 @@ export class PetService {
     { _id: 'p124', name: 'Tami', age: 4, type: 'cat', color: 'white' },
     { _id: 'p125', name: 'Elmo', age: 7, type: 'cat', color: 'white' },
     { _id: 'p126', name: 'Klif', age: 2, type: 'horse', color: 'black' },
+    { _id: 'p127', name: 'Dirden', age: 14, type: 'dog', color: 'Black' },
+    // { _id: 'p128', name: 'Khalisee', age: 4, type: 'cat', color: 'white' },
+    // { _id: 'p129', name: 'Ramif', age: 7, type: 'cat', color: 'white' },
+    // { _id: 'p130', name: 'Perah', age: 2, type: 'cat', color: 'white' },
+    // { _id: 'p131', name: 'Felix', age: 14, type: 'dog', color: 'Black' },
+    // { _id: 'p132', name: 'Hu Hu', age: 4, type: 'cat', color: 'white' },
+    // { _id: 'p133', name: 'Nazario jr.', age: 7, type: 'dog', color: 'white' },
+    // { _id: 'p134', name: 'Claudiu', age: 2, type: 'horse', color: 'white' },
   ];
 
   private _pets$ = new BehaviorSubject<Pet[]>([]);
@@ -39,6 +47,15 @@ export class PetService {
     this._petFilter$.next(petFilter);
     this.query();
     return of(petFilter);
+  }
+
+  delete(petId: string) {
+    const pets = this._petsDb;
+    const petIdx = pets.findIndex((p) => p._id === petId);
+    if (petIdx === -1) throw new Error('could not delete pet');
+    pets.splice(petIdx, 1);
+    this._pets$.next(pets);
+    return of({});
   }
 
   private _add(pet: Pet) {

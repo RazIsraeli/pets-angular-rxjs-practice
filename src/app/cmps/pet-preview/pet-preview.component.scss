@@ -8,6 +8,8 @@
   border-radius: 2em;
   color: rgb(248, 109, 248);
 
+  overflow-y: hidden;
+
   &:hover {
     position: relative;
     left: 0.2em;
@@ -16,6 +18,29 @@
     box-shadow: 0 0 3px 1px rgb(248, 109, 248);
     color: #858585;
     background-color: rgba(248, 109, 248, 0.3);
+
     font-weight: 600;
+
+    .actions {
+      transform: translateY(0);
+    }
+  }
+
+  .actions {
+    button {
+      padding: 0.5em 1em;
+    }
+    .btn-remove {
+      box-shadow: inset 0 0 12px 1px rgb(230 74 112);
+      &:hover {
+        font-weight: 400;
+      }
+    }
+    .btn-edit {
+      box-shadow: inset 0 0 12px 1px rgb(74 147 230);
+    }
+    transform: translateY(150%);
+
+    transition: transform 0.5s;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Pet } from 'src/app/models/pet';
 
 @Component({
@@ -8,4 +8,9 @@ import { Pet } from 'src/app/models/pet';
 })
 export class PetPreviewComponent {
   @Input() pet!: Pet;
+  @Output() deletePet = new EventEmitter<string>();
+
+  onDeletePet(petId: string) {
+    this.deletePet.emit(petId);
+  }
 }
