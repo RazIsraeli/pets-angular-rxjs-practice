@@ -1,0 +1,55 @@
+.add-pet-modal {
+  position: fixed;
+  top: 20vh;
+  left: 30vw;
+  width: 500px;
+  height: 500px;
+  background-color: rgba(217, 137, 248, 0.644);
+  border-radius: 8px;
+
+  padding: 1em;
+
+  .closeModal {
+    margin-bottom: 1em;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    border: none;
+    outline: none;
+
+    border-radius: 2em;
+    box-shadow: 0 0 3px 1px red;
+
+    background-color: white;
+    color: black;
+
+    &:hover {
+      box-shadow: 0 0 6px 1px red;
+      background-color: black;
+
+      color: white;
+      font-weight: 800;
+    }
+  }
+
+  input:not(#color),
+  select {
+    outline: none;
+    &:focus.ng-pristine {
+      border: none;
+      outline: 1px solid blue;
+    }
+    &.ng-invalid.ng-touched {
+      border: none;
+      outline: 1px solid red;
+    }
+    &.ng-valid.ng-dirty {
+      border: none;
+      outline: 1px solid green;
+    }
+  }
+  .form-control-feedback {
+    color: red;
+  }
+}

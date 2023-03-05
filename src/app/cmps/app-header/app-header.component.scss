@@ -1,0 +1,16 @@
+.app-header {
+  padding-block-start: 1em;
+  padding-inline: 10vw;
+
+  height: 5vh;
+
+  .logo {
+    font-size: 1.3em;
+    font-weight: 800;
+    box-shadow: 0 0 1px 3px #ccc;
+  }
+
+  nav {
+    gap: 1em;
+  }
+}

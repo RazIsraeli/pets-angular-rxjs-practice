@@ -1,0 +1,43 @@
+<section class="add-pet-modal">
+  <button (click)="onCloseModal()" class="closeModal">X</button>
+  <form [formGroup]="form" (ngSubmit)="onSavePet()" class="flex column">
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" id="name" placeholder="pet name">
+    <div *ngIf="name.invalid && (name.touched || name.dirty)" class="form-control-feedback">
+      <p *ngIf="name.errors!['required']">Name is required!</p>
+      <p *ngIf="name.errors!['minlength']">Name is too short!</p>
+    </div>
+
+    <label for="age">Age</label>
+    <input type="number" formControlName="age" id="age" placeholder="pet age">
+    <div *ngIf="age.invalid && (age.touched || age.dirty)" class="form-control-feedback">
+      <p *ngIf="age.errors!['required']">age is required!</p>
+      <p *ngIf="age.errors!['min']">age can't be a negative number!</p>
+    </div>
+
+    <label for="type">Type</label>
+    <select formControlName="type" id="type">
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="horse">Horse</option>
+      <option value="other">Other</option>
+    </select>
+    <div *ngIf="type.invalid && (type.touched || type.dirty)" class="form-control-feedback">
+      <p *ngIf="type.errors!['required']">type is required!</p>
+    </div>
+
+    <div class="radio-white flex">
+      <label for="white">White</label>
+      <input type="radio" formControlName="color" id="color" value="white">
+    </div>
+    <div class="radio-black flex">
+      <label for="black">Black</label>
+      <input type="radio" formControlName="color" id="color" value="black">
+    </div>
+    <div *ngIf="color.pristine" class="form-control-feedback">
+      <p *ngIf="color.errors!['required']">color is required!</p>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit">Save</button>
+  </form>
+</section>

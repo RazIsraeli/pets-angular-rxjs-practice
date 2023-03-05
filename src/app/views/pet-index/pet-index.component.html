@@ -1,0 +1,10 @@
+<section class="pet-index flex column align-center">
+  <screen *ngIf="isShowAddPetModal" (closeModal)="closeModal($event)"></screen>
+  <h2 class="index-title">My Pet App!</h2>
+  <pet-filter-rxjs></pet-filter-rxjs>
+  <button class="add" type="button" (click)="isShowAddPetModal = true">ADD</button>
+  <!-- <pet-filter></pet-filter> -->
+  <pet-list [pets]="pets$ | async"></pet-list>
+
+  <add-pet-modal *ngIf="isShowAddPetModal" (addPet)="addPet($event)" (closeModal)="closeModal($event)"></add-pet-modal>
+</section>
