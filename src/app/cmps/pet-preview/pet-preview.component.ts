@@ -13,4 +13,8 @@ export class PetPreviewComponent {
   onDeletePet(petId: string) {
     this.deletePet.emit(petId);
   }
+
+  onEditPet(petId: string) {
+    this.deletePet.emit(petId);
+  }
 }

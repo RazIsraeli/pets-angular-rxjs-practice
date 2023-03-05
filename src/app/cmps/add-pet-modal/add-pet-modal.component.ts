@@ -1,14 +1,15 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Pet } from 'src/app/models/pet';
 import { PetService } from 'src/app/services/pet.service';
-import { filter, map, tap } from 'rxjs';
+import { filter, map, Subscription } from 'rxjs';
 
 @Component({
   selector: 'add-pet-modal',
@@ -16,9 +17,10 @@ import { filter, map, tap } from 'rxjs';
   styleUrls: ['./add-pet-modal.component.scss'],
 })
 //! REQUIRES REACTIVEFORMSMODULE, FORMBUILDER, FORMGROUP, VALIDATORS
-export class AddPetModalComponent implements OnInit {
+export class AddPetModalComponent implements OnInit, OnDestroy {
   @Output() addPet = new EventEmitter<Pet>();
   @Output() closeModal = new EventEmitter<boolean>();
+  @Output() openModal = new EventEmitter<boolean>();
 
   form!: FormGroup;
   name!: FormControl;
@@ -27,12 +29,23 @@ export class AddPetModalComponent implements OnInit {
   color!: FormControl;
 
   pet!: Pet;
+  subscription!: Subscription;
 
-  constructor(private petService: PetService, private router: Router) {}
+  constructor(
+    private petService: PetService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
+
+    this.openModal.emit(true);
+
+    this.subscription = this.route.data.subscribe(({ pet }) => {
+      this.pet = pet || (this.petService.getEmptyPet() as Pet);
+    });
 
     this.form.valueChanges
       .pipe(
@@ -84,5 +97,10 @@ export class AddPetModalComponent implements OnInit {
 
   onCloseModal() {
     this.closeModal.emit(true);
+    this.router.navigateByUrl('/');
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

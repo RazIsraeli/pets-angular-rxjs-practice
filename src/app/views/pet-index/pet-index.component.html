@@ -6,5 +6,8 @@
   <!-- <pet-filter></pet-filter> -->
   <pet-list [pets]="pets$ | async" (deletePet)="deletePet($event)"></pet-list>
 
-  <add-pet-modal *ngIf="isShowAddPetModal" (addPet)="addPet($event)" (closeModal)="closeModal($event)"></add-pet-modal>
+  <add-pet-modal *ngIf="isShowAddPetModal" (addPet)="addPet($event)"
+    (closeModal)="isShowAddPetModal=false"></add-pet-modal>
 </section>
+
+<router-outlet></router-outlet>

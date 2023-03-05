@@ -58,6 +58,20 @@ export class PetService {
     return of({});
   }
 
+  getPetById(petId: string) {
+    const pet = this._petsDb.find((pet) => pet._id === petId);
+    return pet ? of({ ...pet }) : of({} as Pet);
+  }
+
+  getEmptyPet() {
+    return {
+      name: '',
+      age: 0,
+      type: '',
+      color: '',
+    };
+  }
+
   private _add(pet: Pet) {
     pet._id = this._makeId();
     this._petsDb.push(pet);

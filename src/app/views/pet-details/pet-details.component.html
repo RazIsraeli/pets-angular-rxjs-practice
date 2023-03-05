@@ -1,3 +1,8 @@
-<section class="pet-details">
-  <p>pet details works!</p>
+<section *ngIf="pet" class="pet-details flex column align-center">
+  <button class="btn-back" (click)="onBack()">BACK</button>
+  <img src="https://robohash.org/{{pet._id}}?set=set4" alt="pet" class="card-image">
+  <h2 class="card-header">{{pet.name}}</h2>
+  <h3><span class="card-details">Age: </span>{{pet.age}}</h3>
+  <h3><span class="card-details">Color: </span>{{pet.color}}</h3>
+  <h3><span class="card-details">Type: </span>{{pet.type}}</h3>
 </section>

@@ -2,7 +2,7 @@
   text-transform: uppercase;
   padding: 0.5em;
   width: 200px;
-  text-align: center;
+  height: 70px;
 
   box-shadow: 0 0 3px 1px #ccc;
   border-radius: 2em;
@@ -10,10 +10,13 @@
 
   overflow-y: hidden;
 
+  transition: height 0.5s;
+
   &:hover {
     position: relative;
     left: 0.2em;
     top: 0.2em;
+    height: 100px;
     cursor: pointer;
     box-shadow: 0 0 3px 1px rgb(248, 109, 248);
     color: #858585;
@@ -26,7 +29,22 @@
     }
   }
 
+  .pet-details {
+    .card-image {
+      max-height: 50px;
+      max-width: 50px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px #44434340;
+      object-fit: cover;
+      padding: 0.2em;
+    }
+  }
+
   .actions {
+    transform: translateY(150%);
+
+    transition: transform 0.5s;
+
     button {
       padding: 0.5em 1em;
     }
@@ -39,8 +57,5 @@
     .btn-edit {
       box-shadow: inset 0 0 12px 1px rgb(74 147 230);
     }
-    transform: translateY(150%);
-
-    transition: transform 0.5s;
   }
 }

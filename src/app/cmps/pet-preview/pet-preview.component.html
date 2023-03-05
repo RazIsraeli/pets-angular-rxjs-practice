@@ -1,9 +1,12 @@
 <section class="pet-preview flex column">
-  <div class="pet-details">
-    {{pet.name}}
+  <div [routerLink]="['/pet', pet._id]" class="pet-details flex justify-space-between align-center"
+    title="show pet details">
+    <img src="https://robohash.org/{{pet._id}}?set=set4" alt="pet" class="card-image">
+    <h4>{{pet.name}}</h4>
   </div>
   <div class="actions flex justify-space-between">
     <button (click)="onDeletePet(pet._id)" type="button" class="btn btn-remove" title="delete pet">X</button>
-    <button type="button" class="btn btn-edit" title="edit pet">Edit</button>
+    <a [routerLink]="['/edit', pet._id]"><button class="btn-edit">Edit</button></a>
+    <!-- <button (click)="onEditPet(pet._id)" type="button" class="btn btn-edit" title="edit pet">Edit</button> -->
   </div>
 </section>
