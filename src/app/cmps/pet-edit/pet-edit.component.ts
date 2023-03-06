@@ -40,15 +40,6 @@ export class PetEditComponent implements OnInit, OnDestroy {
     this.subscription = this.route.data.subscribe(({ pet }) => {
       this.pet = pet || (this.petService.getEmptyPet() as Pet);
       this.form.patchValue(this.pet);
-      const petColor = this.form.value.color;
-      if (petColor) {
-        this.form.value.color = petColor.toLowerCase();
-      }
-
-      // console.log('this.form.value.color: ', this.form.value.color);
-
-      // console.log('this.pet: ', this.pet);
-      // console.log('this.form: ', this.form);
     });
 
     this.form.valueChanges
