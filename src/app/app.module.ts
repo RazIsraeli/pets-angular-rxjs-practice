@@ -13,6 +13,9 @@ import { PetFilterComponent } from './cmps/pet-filter/pet-filter.component';
 import { PetDetailsComponent } from './views/pet-details/pet-details.component';
 import { PetEditComponent } from './cmps/pet-edit/pet-edit.component';
 import { ScreenComponent } from './cmps/screen/screen.component';
+import { LoginSignupComponent } from './views/login-signup/login-signup.component';
+import { SignupComponent } from './cmps/signup/signup.component';
+import { LoginComponent } from './cmps/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { ScreenComponent } from './cmps/screen/screen.component';
     PetDetailsComponent,
     PetEditComponent,
     ScreenComponent,
+    LoginSignupComponent,
+    SignupComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

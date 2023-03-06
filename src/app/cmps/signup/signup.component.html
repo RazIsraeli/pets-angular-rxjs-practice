@@ -1,0 +1,28 @@
+<section class="signup">
+  <form [formGroup]="form" (ngSubmit)="onSignup()" class="flex column">
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" id="name" placeholder="full name">
+    <div *ngIf="name.invalid && (name.touched || name.dirty)" class="form-control-feedback">
+      <p *ngIf="name.errors!['required']">Name is required!</p>
+      <p *ngIf="name.errors!['minlength']">Name is too short!</p>
+      <p *ngIf="name.errors!['maxlength']">Name is too long!</p>
+    </div>
+
+
+    <label for="username">Username</label>
+    <input type="text" formControlName="username" id="username" placeholder="username">
+    <div *ngIf="username.invalid && (username.touched || username.dirty)" class="form-control-feedback">
+      <p *ngIf="username.errors!['required']">Username is required!</p>
+      <p *ngIf="username.errors!['minlength']">Username is too short!</p>
+      <p *ngIf="username.errors!['maxlength']">Username is too long!</p>
+    </div>
+
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" id="password" placeholder="password">
+    <div *ngIf="password.invalid && (password.touched || password.dirty)" class="form-control-feedback">
+      <p *ngIf="password.errors!['required']">Password is required!</p>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" class="btn btn-save">Signup</button>
+  </form>
+</section>
