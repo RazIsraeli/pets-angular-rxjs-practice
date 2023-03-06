@@ -6,7 +6,6 @@
   </div>
   <div class="actions flex justify-space-between">
     <button (click)="onDeletePet(pet._id)" type="button" class="btn btn-remove" title="delete pet">X</button>
-    <a [routerLink]="['/edit', pet._id]"><button class="btn-edit">Edit</button></a>
-    <!-- <button (click)="onEditPet(pet._id)" type="button" class="btn btn-edit" title="edit pet">Edit</button> -->
+    <a [routerLink]="['/edit', pet._id]"><button class="btn-edit" title="edit pet">Edit</button></a>
   </div>
 </section>

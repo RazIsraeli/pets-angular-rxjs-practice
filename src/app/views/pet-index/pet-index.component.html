@@ -2,11 +2,9 @@
   <screen *ngIf="isShowAddPetModal" (closeModal)="closeModal($event)"></screen>
   <h2 class="index-title">My Pet App!</h2>
   <pet-filter></pet-filter>
-  <button (click)="isShowAddPetModal = true" class="add" type="button" title="create pet">ADD</button>
-  <!-- <pet-filter></pet-filter> -->
+  <a routerLink="/edit"><button type="button" title="create pet">ADD</button></a>
   <pet-list [pets]="pets$ | async" (deletePet)="deletePet($event)"></pet-list>
 
-  <pet-edit *ngIf="isShowAddPetModal" (addPet)="addPet($event)" (closeModal)="isShowAddPetModal=false"></pet-edit>
 </section>
 
 <router-outlet></router-outlet>

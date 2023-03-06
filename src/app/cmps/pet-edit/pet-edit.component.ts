@@ -18,10 +18,6 @@ import { filter, map, Subscription } from 'rxjs';
 })
 //! REQUIRES REACTIVEFORMSMODULE, FORMBUILDER, FORMGROUP, VALIDATORS
 export class PetEditComponent implements OnInit, OnDestroy {
-  @Output() addPet = new EventEmitter<Pet>();
-  @Output() closeModal = new EventEmitter<boolean>();
-  @Output() openModal = new EventEmitter<boolean>();
-
   form!: FormGroup;
   name!: FormControl;
   age!: FormControl;
@@ -41,10 +37,18 @@ export class PetEditComponent implements OnInit, OnDestroy {
     this.createFormControls();
     this.createForm();
 
-    this.openModal.emit(true);
-
     this.subscription = this.route.data.subscribe(({ pet }) => {
       this.pet = pet || (this.petService.getEmptyPet() as Pet);
+      this.form.patchValue(this.pet);
+      const petColor = this.form.value.color;
+      if (petColor) {
+        this.form.value.color = petColor.toLowerCase();
+      }
+
+      // console.log('this.form.value.color: ', this.form.value.color);
+
+      // console.log('this.pet: ', this.pet);
+      // console.log('this.form: ', this.form);
     });
 
     this.form.valueChanges
@@ -61,13 +65,10 @@ export class PetEditComponent implements OnInit, OnDestroy {
       )
       .subscribe((form) => {
         const { name, age, type, color } = form;
-        const petToCreate = {
-          name,
-          age,
-          type,
-          color,
-        };
-        this.pet = petToCreate as Pet;
+        this.pet.name = name;
+        this.pet.age = age;
+        this.pet.type = type;
+        this.pet.color = color;
       });
   }
 
@@ -92,11 +93,16 @@ export class PetEditComponent implements OnInit, OnDestroy {
   }
 
   onSavePet() {
-    this.addPet.emit(this.pet);
+    this.petService.save(this.pet).subscribe((pet) => {
+      this.router.navigateByUrl('/');
+    });
   }
 
   onCloseModal() {
-    this.closeModal.emit(true);
+    this.router.navigateByUrl('/');
+  }
+
+  goBack() {
     this.router.navigateByUrl('/');
   }
 

@@ -1,3 +1,4 @@
+<screen (click)="goBack()"></screen>
 <section class="pet-edit">
   <button (click)="onCloseModal()" class="closeModal">X</button>
   <form [formGroup]="form" (ngSubmit)="onSavePet()" class="flex column">
@@ -35,7 +36,7 @@
       <input type="radio" formControlName="color" id="color" value="black">
     </div>
     <div *ngIf="color.pristine" class="form-control-feedback">
-      <p *ngIf="color.errors!['required']">color is required!</p>
+      <p *ngIf="!color.value ">color is required!</p>
     </div>
 
     <button [disabled]="form.invalid" type="submit" class="btn btn-save">Save</button>

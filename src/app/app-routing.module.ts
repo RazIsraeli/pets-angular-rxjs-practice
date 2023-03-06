@@ -20,6 +20,10 @@ const routes: Routes = [
         component: PetEditComponent,
         resolve: { pet: PetResolver },
       },
+      {
+        path: 'edit',
+        component: PetEditComponent,
+      },
     ],
   },
 ];
