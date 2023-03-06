@@ -10,7 +10,7 @@
 
   overflow-y: hidden;
 
-  transition: height 0.5s;
+  transition: height 0.5s, border-radius 2s;
 
   &:hover {
     position: relative;
@@ -21,6 +21,7 @@
     box-shadow: 0 0 3px 1px rgb(248, 109, 248);
     color: #858585;
     background-color: rgba(248, 109, 248, 0.3);
+    border-radius: 0;
 
     font-weight: 600;
 

@@ -12,7 +12,7 @@ import { PetPreviewComponent } from './cmps/pet-preview/pet-preview.component';
 import { PetFilterComponent } from './cmps/pet-filter/pet-filter.component';
 import { PetFilterRxjsComponent } from './cmps/pet-filter-rxjs/pet-filter-rxjs.component';
 import { PetDetailsComponent } from './views/pet-details/pet-details.component';
-import { AddPetModalComponent } from './cmps/add-pet-modal/add-pet-modal.component';
+import { PetEditComponent } from './cmps/pet-edit/pet-edit.component';
 import { ScreenComponent } from './cmps/screen/screen.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { ScreenComponent } from './cmps/screen/screen.component';
     PetFilterComponent,
     PetFilterRxjsComponent,
     PetDetailsComponent,
-    AddPetModalComponent,
+    PetEditComponent,
     ScreenComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],

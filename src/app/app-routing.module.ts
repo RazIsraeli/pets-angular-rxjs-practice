@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddPetModalComponent } from './cmps/add-pet-modal/add-pet-modal.component';
+import { PetEditComponent } from './cmps/pet-edit/pet-edit.component';
 import { PetResolver } from './services/pet.resolver';
 import { PetDetailsComponent } from './views/pet-details/pet-details.component';
 import { PetIndexComponent } from './views/pet-index/pet-index.component';
@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: 'edit/:id',
-        component: AddPetModalComponent,
+        component: PetEditComponent,
         resolve: { pet: PetResolver },
       },
     ],

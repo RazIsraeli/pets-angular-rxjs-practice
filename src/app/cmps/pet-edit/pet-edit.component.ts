@@ -12,12 +12,12 @@ import { PetService } from 'src/app/services/pet.service';
 import { filter, map, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'add-pet-modal',
-  templateUrl: './add-pet-modal.component.html',
-  styleUrls: ['./add-pet-modal.component.scss'],
+  selector: 'pet-edit',
+  templateUrl: './pet-edit.component.html',
+  styleUrls: ['./pet-edit.component.scss'],
 })
 //! REQUIRES REACTIVEFORMSMODULE, FORMBUILDER, FORMGROUP, VALIDATORS
-export class AddPetModalComponent implements OnInit, OnDestroy {
+export class PetEditComponent implements OnInit, OnDestroy {
   @Output() addPet = new EventEmitter<Pet>();
   @Output() closeModal = new EventEmitter<boolean>();
   @Output() openModal = new EventEmitter<boolean>();

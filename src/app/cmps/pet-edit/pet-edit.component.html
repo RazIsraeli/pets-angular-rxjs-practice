@@ -1,4 +1,4 @@
-<section class="add-pet-modal">
+<section class="pet-edit">
   <button (click)="onCloseModal()" class="closeModal">X</button>
   <form [formGroup]="form" (ngSubmit)="onSavePet()" class="flex column">
     <label for="name">Name</label>
@@ -38,6 +38,6 @@
       <p *ngIf="color.errors!['required']">color is required!</p>
     </div>
 
-    <button [disabled]="form.invalid" type="submit">Save</button>
+    <button [disabled]="form.invalid" type="submit" class="btn btn-save">Save</button>
   </form>
 </section>
