@@ -1,3 +1,4 @@
 <section class="pet-filter">
-  <input [(ngModel)]="petFilter" (ngModelChange)="onSetFilter()" type="text" name="petFilter" id="petFilter">
+  <input [ngModel]="petFilter$ | async" [formControl]="searchTerm" type="text" name="petFilter" id="petFilter"
+    placeholder="type to search pets...">
 </section>

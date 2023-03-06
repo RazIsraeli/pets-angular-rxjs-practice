@@ -1,32 +1,32 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { debounce } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs';
-import { debounceTime } from 'rxjs';
-import { Subscription } from 'rxjs';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { PetService } from 'src/app/services/pet.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime } from 'rxjs';
+import { switchMap } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'pet-filter',
   templateUrl: './pet-filter.component.html',
   styleUrls: ['./pet-filter.component.scss'],
 })
-export class PetFilterComponent implements OnInit, OnDestroy {
+export class PetFilterComponent implements OnInit {
   constructor(private petService: PetService) {}
-  petFilter!: string;
-  subscription!: Subscription;
 
-  ngOnInit(): void {
-    this.subscription = this.petService.petFilter$.subscribe(
-      (petFilter) => (this.petFilter = petFilter)
-    );
-  }
+  searchTerm = new FormControl('');
+  petFilter$!: Observable<string>;
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  onSetFilter() {
-    this.petService.setPetFilter(this.petFilter);
+  ngOnInit() {
+    this.petFilter$ = this.petService.petFilter$;
+    this.searchTerm.valueChanges
+      .pipe(
+        debounceTime(600),
+        distinctUntilChanged(),
+        switchMap(() => {
+          return this.petService.setPetFilter(this.searchTerm.value!);
+        })
+      )
+      .subscribe();
   }
 }
