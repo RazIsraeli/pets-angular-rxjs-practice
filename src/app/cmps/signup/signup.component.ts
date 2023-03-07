@@ -71,8 +71,7 @@ export class SignupComponent implements OnInit {
 
   onSignup() {
     this.userService.signup(this.user as User).subscribe((user) => {
-      // this.router.navigateByUrl('/');
-      console.log(`user ${user.username} has sign up to pets app!`);
+      this.router.navigateByUrl('/');
     });
   }
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'pet/:id',
     component: PetDetailsComponent,
     resolve: { pet: PetResolver },
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
