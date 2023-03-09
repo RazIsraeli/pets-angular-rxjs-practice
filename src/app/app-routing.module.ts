@@ -32,6 +32,7 @@ const routes: Routes = [
         path: 'edit/:id',
         component: PetEditComponent,
         resolve: { pet: PetResolver },
+        canActivate: [AuthGuard],
       },
       {
         path: 'edit',

@@ -11,6 +11,15 @@
     margin-block-end: 1em;
   }
 
+  .info {
+    color: red;
+    margin-bottom: 1em;
+    .bold {
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+
   button.add {
     border: none;
     outline: none;

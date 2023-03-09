@@ -1,6 +1,11 @@
 <section class="pet-index flex column align-center">
   <screen *ngIf="isShowAddPetModal" (closeModal)="closeModal($event)"></screen>
   <h2 class="index-title">My Pet App!</h2>
+  <p *ngIf="!(loggedInUser$ | async)" class="info">Please note: Only signed in users can access <span class="bold">pet
+      details page</span> and
+    <span class="bold">edit/delete</span>
+    existing pets
+  </p>
   <pet-filter></pet-filter>
   <a routerLink="/edit"><button type="button" title="create pet">ADD</button></a>
   <pet-list [pets]="pets$ | async" (deletePet)="deletePet($event)"></pet-list>

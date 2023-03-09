@@ -1,10 +1,11 @@
-<section class="pet-preview flex column">
+<section class="pet-preview flex column" [ngClass]="{'loggedIn':loggedInUser$ | async}">
   <div [routerLink]="['/pet', pet._id]" class="pet-details flex justify-space-between align-center"
     title="show pet details">
     <img src="https://robohash.org/{{pet._id}}?set=set4" alt="pet" class="card-image">
     <h4>{{pet.name}}</h4>
   </div>
-  <div class="actions flex justify-space-between">
+  <div class="actions flex justify-space-between" *ngIf="loggedInUser$ | async as loggedInUser"
+    [ngClass]="{'actions':loggedInUser}">
     <button (click)="onDeletePet(pet._id)" type="button" class="btn btn-remove" title="delete pet">X</button>
     <a [routerLink]="['/edit', pet._id]"><button class="btn-edit" title="edit pet">Edit</button></a>
   </div>
